@@ -1,4 +1,7 @@
 export default class WarService {
+  constructor (id) {
+    this.id = id;
+  }
   static getDeck() {
     return new Promise(function(resolve, reject) {
       let request = new XMLHttpRequest();
@@ -19,8 +22,7 @@ export default class WarService {
     console.log(deck);
     return new Promise(function(resolve, reject) {
       let request = new XMLHttpRequest();
-      const url = `http://deckofcardsapi.com/api/deck/${deck}/draw/?count=26`; //${decks.card.codes}
-      console.log(deck.cards);
+      const url = `http://deckofcardsapi.com/api/deck/${deck}/draw/?count=26`; 
       request.onload = function() {
         if (this.status === 200) {
           resolve(request.response);
@@ -35,7 +37,7 @@ export default class WarService {
   static dishPile(deck_id, pilename, cards) {
     return new Promise(function(resolve, reject) {
       let request = new XMLHttpRequest();
-      const url = `http://deckofcardsapi.com/api/deck/${deck_id}/pile/${pilename}/add/?cards=${cards}`; //${decks.card.codes}
+      const url = `http://deckofcardsapi.com/api/deck/${deck_id}/pile/${pilename}/add/?cards=${cards}`; 
       request.onload = function() {
         if (this.status === 200) {
           resolve(request.response);
@@ -66,3 +68,5 @@ export default class WarService {
   }
   //  http://deckofcardsapi.com/api/deck/<<deck_id>>/pile/<<pile_name>>/add/?cards=
 }
+
+  //  http://deckofcardsapi.com/api/deck/<<deck_id>>/pile/<<pile_name>>/add/?cards=
